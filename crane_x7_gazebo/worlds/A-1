@@ -1,0 +1,386 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="CRANE-X7 with Table">
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <model name="table">
+      <include>
+        <uri>model://table</uri>
+      </include>
+
+      <!-- X7を机の端に配置するため、机を移動、回転する -->
+      <pose>0.29 0 0 0 0 1.5708</pose>
+    </model>
+
+    <!--    <model name="wood_cube_5cm">
+      <include>
+        <uri>model://wood_cube_5cm</uri>
+      </include>
+      <pose>0.20 0 1.0 0 0 0</pose>
+    </model>
+    -->
+
+    <model name="cup1">
+  <pose>0.28 0.2 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+		<ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.024</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.024</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+    <model name="cup2">
+  <pose>0.33 0.4 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>0.03</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+    <model name="cup3">
+  <pose>0.33 0.3 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup4">
+  <pose>0.23 0.4 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup5">
+  <pose>0.23 0.3 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+	      <mass>1.0</mass>
+        <inertia>
+	  <ixx>0.0023</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.0023</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.0023</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+    <model name="cup6">
+  <pose>0.23 -0.3 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup7">
+  <pose>0.23 -0.4 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup8">
+  <pose>0.33 -0.3 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup9">
+  <pose>0.33 -0.4 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+    <model name="cup10">
+  <pose>0.28 -0.2 1.5 0 0 0</pose>
+    <link name="link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.083</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.083</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.083</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+		  <radius>0.0275</radius>
+		  <length>0.06</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+
+
+
+
+    <model name="ground_plane">
+      <include>
+        <uri>model://ground_plane</uri>
+      </include>
+
+      <joint name='ground_joint' type='fixed'>
+        <parent>ground_plane::link</parent>
+        <child>table::link</child>
+      </joint>
+    </model>
+  </world>
+</sdf>
