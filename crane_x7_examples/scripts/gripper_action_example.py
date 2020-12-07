@@ -33,7 +33,7 @@ def main():
     force_hold_stick = 0.5 # 棒を握る力を指定
     
     te_x_position_vertical = 0.293040 # x
-    te_y_position_vertical = -0.133386 # y
+    te_y_position_vertical = -0.233386 # y
     te_z_position_vertical = 0.085469  # z
     stick_angle_vertical = 1.3 # 棒
 
