@@ -41,7 +41,7 @@ def main():
     stick_angle_vertical = 1.3 # 棒の角度を指定
 
    
- """
+"""
     # アーム初期ポーズを表示
     arm_initial_pose = arm.get_current_pose().pose
     print("Arm initial pose:")
