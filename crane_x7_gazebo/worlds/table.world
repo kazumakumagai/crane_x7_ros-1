@@ -1,3 +1,4 @@
+  
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="CRANE-X7 with Table">
@@ -15,52 +16,78 @@
       <pose>0.29 0 0 0 0 1.5708</pose>
     </model>
 
-    <!--    <model name="wood_cube_5cm">
-      <include>
-        <uri>model://wood_cube_5cm</uri>
-      </include>
-      <pose>0.20 0 1.0 0 0 0</pose>
-    </model>
-    -->
+<!-- -0.0164 -0.00017 1.686098 0 0 0 -->
 
-    <model name="cup1">
-  <pose>0.35 0.13 1.5 0 0 0</pose>
+    <model name="stick">
     <link name="link">
+      <pose> 0.01925 0 0.1 0 0 0</pose>
       <inertial>
-        <mass>0.01</mass>
+        <mass>0.9</mass>
         <inertia>
-		<ixx>0.083</ixx>
-          <ixy>0.0</ixy>
-          <ixz>0.0</ixz>
-          <iyy>0.083</iyy>
-          <iyz>0.0</iyz>
-          <izz>0.083</izz>
+          <ixx>2.3541666666666672e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.3541666666666672e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.3541666666666672e-05</izz>
         </inertia>
       </inertial>
+
       <collision name="collision">
         <geometry>
-          <cylinder>
-		  <radius>0.024</radius>
-		  <length>0.06</length>
-          </cylinder>
+          <box>
+            <size>0.005 0.01 0.20</size>
+          </box>
         </geometry>
       </collision>
+
       <visual name="visual">
         <geometry>
-          <cylinder>
-		  <radius>0.024</radius>
-		  <length>0.06</length>
-          </cylinder>
+          <box>
+            <size>0.005 0.01 0.20</size>
+          </box>
         </geometry>
       </visual>
     </link>
   </model>
 
-  <model name="cup2">
-  <pose>0.35 -0.11 1.5 0 0 0</pose>
+<!--
+    <model name="slope">
+    <link name="link">
+      <pose>0.28 0.2 1.5 0 0 0</pose>
+      <inertial>
+        <mass>0.9</mass>
+        <inertia>
+          <ixx>2.3541666666666672e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.3541666666666672e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2.3541666666666672e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.007 0.25 0.007</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.007 0.25 0.007</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+-->
+    <model name="tanbarin">
+  <pose>0.3 0.5 1.7 0 0 0</pose>
     <link name="link">
       <inertial>
-        <mass>0.01</mass>
+        <mass>0.9</mass>
         <inertia>
 		<ixx>0.083</ixx>
           <ixy>0.0</ixy>
@@ -73,16 +100,16 @@
       <collision name="collision">
         <geometry>
           <cylinder>
-		  <radius>0.024</radius>
-		  <length>0.06</length>
+		  <radius>0.192</radius>
+		  <length>0.035</length>
           </cylinder>
         </geometry>
       </collision>
       <visual name="visual">
         <geometry>
           <cylinder>
-		  <radius>0.024</radius>
-		  <length>0.06</length>
+		  <radius>0.192</radius>
+		  <length>0.035</length>
           </cylinder>
         </geometry>
       </visual>
