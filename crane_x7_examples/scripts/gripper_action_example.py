@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 import rospy
 import moveit_commander
 import geometry_msgs.msg
@@ -26,56 +25,6 @@ def main():
 
     print("Current state:")
     print(robot.get_current_state())
-    
-    position_base =[[0.29, 0.13, 0.29, -0.11]]
-    Acup_tukamu = False
-    Bcup_tukamu = False
-
-  
-    def position_manager(master_judge,paper_cup,x,y,tukami):
-        global Acup_tukamu
-        global Bcup_tukamu
-        position_ret=[0.0,0.0]
-        if master_judge == True:
-            if len(position_base)>0:
-
-            #ホンスワン
-                if paper_cup == True:
-                    position_ret[0] = position_base[len(position_base)-1][2]
-                    position_ret[1] = position_base[len(position_base)-1][3]
-                    #position_historyの末尾の紙Aコップのx座標y座標
-                    return position_ret
-                else:
-                    position_ret[0] = position_base[len(position_base)-1][0]
-                    position_ret[1] = position_base[len(position_base)-1][1]
-                    #position_historyの末尾の紙Bコップのx座標y座標
-                    return position_ret
-
-            else:
-                return position_ret
-
-        else:
-            #熊谷さん
-            #position_base配列の末尾にx,yを追加
-            if tukami == True:
-                #Aをつかんでいる場合
-                if position_base[len(position_base)-1][0] == x and position_base[len(position_base)-1][1] == y:
-                    position_base.append([x,y,position_base[len(position_base)-1][2],position_base[len(position_base)-1][3]])
-                    Acup_tukamu = True
-                #Bをつかんでいる場合
-                elif position_base[len(position_base)-1][2] == x and position_base[len(position_base)-1][3] == y:
-                    position_base.append([position_base[len(position_base)-1][0],position_base[len(position_base)-1][1],x,y])
-                    Bcup_tukamu = True
-            else:
-                #Aをはなした時
-                if Acup_tukamu == True:
-                    position_base.append([x,y,position_base[len(position_base)-1][2],position_base[len(position_base)-1][3]])
-                    Acup_tukamu = False
-                elif Bcup_tukamu == True:
-                    position_base.append([position_base[len(position_base)-1][0],position_base[len(position_base)-1][1],x,y])
-                    Bcup_tukamu = False
-
-            return position_ret
 
 
 
@@ -83,10 +32,10 @@ def main():
 
     force_hold_stick = 0.5 # 棒を握る力を指定
     
-    te_x_position_vertical = 0.043040 # タンバリンの手前のx座標を指定
-    te_y_position_vertical = 0.303386 # タンバリンのy座標を指定
-    te_z_position_vertical = 0.085469  # タンバリンの少し上のz座標を指定
-    stick_angle_vertical = 1.3 # 棒の角度を指定
+    te_x_position_vertical = 0.043040 # x
+    te_y_position_vertical = 0.303386 # y
+    te_z_position_vertical = 0.085469  # z
+    stick_angle_vertical = 1.3 # 棒
 
     
     # アーム初期ポーズを表示
