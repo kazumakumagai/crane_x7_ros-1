@@ -126,7 +126,20 @@ def main():
         target_pose.orientation.w = q[3]
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
-
+        
+        
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
  
     move_max_velocity()
     arm.set_named_target("home")
