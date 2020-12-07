@@ -75,7 +75,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-    def preparation_vertical():
+    def p1_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -88,12 +88,12 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-    def preparation_vertical():
+    def p2_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
         target_pose.position.z = te_z_position_vertical
-        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
+        q = quaternion_from_euler(-3.14 * 9 / -10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
         target_pose.orientation.z = q[2]
@@ -101,7 +101,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-    def preparation_vertical():
+    def p3_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -114,12 +114,12 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-    def preparation_vertical():
+    def p4_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
         target_pose.position.z = te_z_position_vertical
-        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
+        q = quaternion_from_euler(3.14 * 9 / -10, 3.14 / -2, -3.14)  # 上方から掴みに行く場合
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
         target_pose.orientation.z = q[2]
@@ -129,17 +129,17 @@ def main():
         
         
     preparation_vertical()
-    hit_tambourine_vertical()
     preparation_vertical()
-    hit_tambourine_vertical()
+    p1_vertical()
     preparation_vertical()
-    hit_tambourine_vertical()
+    p2_vertical()
     preparation_vertical()
-    hit_tambourine_vertical()
+    p3_vertical()
     preparation_vertical()
-    hit_tambourine_vertical()
+    p4_vertical()
     preparation_vertical()
-    hit_tambourine_vertical()
+    p1_vertical()
+    preparation_vertical()
  
     move_max_velocity()
     arm.set_named_target("home")
