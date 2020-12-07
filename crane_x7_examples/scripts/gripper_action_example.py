@@ -113,7 +113,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-     def preparation_vertical():
+            def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -126,7 +126,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-     def preparation_vertical():
+            def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -139,7 +139,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-     def preparation_vertical():
+            def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -152,7 +152,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-     def preparation_vertical():
+            def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
@@ -165,7 +165,7 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
         
-     def preparation_vertical():
+            def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
