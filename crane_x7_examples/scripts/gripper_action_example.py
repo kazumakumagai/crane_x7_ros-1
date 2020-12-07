@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 import rospy
 import moveit_commander
 import geometry_msgs.msg
@@ -27,21 +28,92 @@ def main():
     print(robot.get_current_state())
 
     ###
-    ### 変数宣言
+    ###     b-group
+    ###
+
+    #紙Aコップのx座標　紙Aコップのy座標　紙Bコップx座標 紙Bコップy座標
+    position_base =[[0.29, 0.13, 0.29, -0.11]]
+    Acup_tukamu = False
+    Bcup_tukamu = False
+
+    """
+    使い方
+    ハンドをつかんだ時は
+    position_manager(False,False,x,y,True)
+    ハンドをはなした時は
+    position_manager(False,False,x,y,False)
+    Aカップをつかみたい時の手先の位置を知りたいときは
+    aa = position_manager(True,True,0,0,False)
+    x = aa[0]
+    y = aa[1]
+    BBカップをつかみたい時の手先の位置を知りたいときは
+    aa = position_manager(True,False,0,0,False)
+    x = aa[0]
+    y = aa[1]
+    """
+    def position_manager(master_judge,paper_cup,x,y,tukami):
+        global Acup_tukamu
+        global Bcup_tukamu
+        position_ret=[0.0,0.0]
+        if master_judge == True:
+            if len(position_base)>0:
+
+            #ホンスワン
+                if paper_cup == True:
+                    position_ret[0] = position_base[len(position_base)-1][2]
+                    position_ret[1] = position_base[len(position_base)-1][3]
+                    #position_historyの末尾の紙Aコップのx座標y座標
+                    return position_ret
+                else:
+                    position_ret[0] = position_base[len(position_base)-1][0]
+                    position_ret[1] = position_base[len(position_base)-1][1]
+                    #position_historyの末尾の紙Bコップのx座標y座標
+                    return position_ret
+
+            else:
+                return position_ret
+
+        else:
+            #熊谷さん
+            #position_base配列の末尾にx,yを追加
+            if tukami == True:
+                #Aをつかんでいる場合
+                if position_base[len(position_base)-1][0] == x and position_base[len(position_base)-1][1] == y:
+                    position_base.append([x,y,position_base[len(position_base)-1][2],position_base[len(position_base)-1][3]])
+                    Acup_tukamu = True
+                #Bをつかんでいる場合
+                elif position_base[len(position_base)-1][2] == x and position_base[len(position_base)-1][3] == y:
+                    position_base.append([position_base[len(position_base)-1][0],position_base[len(position_base)-1][1],x,y])
+                    Bcup_tukamu = True
+            else:
+                #Aをはなした時
+                if Acup_tukamu == True:
+                    position_base.append([x,y,position_base[len(position_base)-1][2],position_base[len(position_base)-1][3]])
+                    Acup_tukamu = False
+                elif Bcup_tukamu == True:
+                    position_base.append([position_base[len(position_base)-1][0],position_base[len(position_base)-1][1],x,y])
+                    Bcup_tukamu = False
+
+            return position_ret
+
+    ###
+    ###     b-group-end
+    ###
+
+    ###
+    ###     a-group
     ###
 
     stop_time = 2.0  # 停止する時間を指定
 
     force_hold_stick = 0.5 # 棒を握る力を指定
     
-    
-    te_x_position_vertical = 0.043040 # x座標
-    te_y_position_vertical = 0.303386 # y座標
-    te_z_position_vertical = 0.085469  # z座標
+    te_x_position_vertical = 0.043040 # タンバリンの手前のx座標を指定
+    te_y_position_vertical = 0.303386 # タンバリンのy座標を指定
+    te_z_position_vertical = 0.085469  # タンバリンの少し上のz座標を指定
     stick_angle_vertical = 1.3 # 棒の角度を指定
 
-   
-"""
+    
     # アーム初期ポーズを表示
     arm_initial_pose = arm.get_current_pose().pose
     print("Arm initial pose:")
@@ -58,47 +130,6 @@ def main():
         target_pose.position.x = pos_x
         target_pose.position.y = pos_y
         target_pose.position.z = pos_z
-        q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0)  
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose) 
-        arm.go()  
-
-  
-    def preparation_vertical():
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = te_x_position_vertical
-        target_pose.position.y = te_y_position_vertical
-        target_pose.position.z = te_z_position_vertical
-        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-
-   
-    def hit_tambourine_vertical():
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = te_x_position_vertical
-        target_pose.position.y = te_y_position_vertical
-        target_pose.position.z = te_z_position_vertical
-        q = quaternion_from_euler(3.14 * 9 / 10, stick_angle_vertical, -3.14)  
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  
-        arm.go()  # 実行
-
-　　 def move_arm(pos_x, pos_y, pos_z):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = pos_z
         q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0)  # 上方から掴みに行く場合
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
@@ -107,13 +138,12 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
 
-    # コップ上部をつかむ位置へ移動１
-    def move_arm_upper(pos_x, pos_y):
+    def preparation_vertical():
         target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = 0.25
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
         target_pose.orientation.z = q[2]
@@ -121,109 +151,11 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
 
-    # コップ上部をつかむ位置へ移動２
-    def move_arm_upper_catch(pos_x, pos_y):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = weak_position
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-
-    # コップ下部をつかむ位置へ移動１
-    def move_arm_lower(pos_x, pos_y):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = 0.25
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-
-    # コップ下部をつかむ位置へ移動２
-    def move_arm_lower_catch(pos_x, pos_y):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = strong_position
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-
-    # コップの上を持ち上へ移動
-    def move_arm_upper_up(pos_x, pos_y):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = 0.25
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-
-    
-    def move_arm_lower_up(pos_x, pos_y):
-        target_pose = geometry_msgs.msg.Pose()
-        target_pose.position.x = pos_x
-        target_pose.position.y = pos_y
-        target_pose.position.z = 0.25
-        q = quaternion_from_euler(0, 3.14, 0)  # 上方から掴みに行く場合
-        target_pose.orientation.x = q[0]
-        target_pose.orientation.y = q[1]
-        target_pose.orientation.z = q[2]
-        target_pose.orientation.w = q[3]
-        arm.set_pose_target(target_pose)  # 目標ポーズ設定
-        arm.go()  # 実行
-    """
-    
-      #頂点に振り上げる
-    move_arm(0.1, 0.0, 0.5)
-    #あおり
-    move_arm(0.22, -0.2, 0.2)
-    #頂点に振り上げる
-    move_arm(0.1, 0.0, 0.5)
-    #あおり
-    move_arm(0.22, 0.2, 0.2)
-    #homeに戻る
-    arm.set_named_target("home")
-    arm.go()
-
-    
-    
-    
-    
-    
-    
-    
-    
-        
-    # SRDFに定義されている"home"の姿勢にする
-    arm.set_named_target("home")
-    arm.go()
-
-
-
-
-
+ 
     move_max_velocity()
     arm.set_named_target("home")
     arm.go()
+
 
 
 if __name__ == '__main__':
