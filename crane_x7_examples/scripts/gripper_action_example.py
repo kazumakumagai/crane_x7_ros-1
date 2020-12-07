@@ -80,7 +80,7 @@ def main():
         target_pose.position.x = te_x_position_vertical
         target_pose.position.y = te_y_position_vertical
         target_pose.position.z = te_z_position_vertical
-        q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0)  # 上方から掴みに行く場合
+        q = quaternion_from_euler(0.29, 3.14, -3.14/2.0)  # 上方から掴みに行く場合
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
         target_pose.orientation.z = q[2]
