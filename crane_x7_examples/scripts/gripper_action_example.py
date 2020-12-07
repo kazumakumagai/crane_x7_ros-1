@@ -151,6 +151,58 @@ def main():
         arm.set_pose_target(target_pose)  # 目標ポーズ設定
         arm.go()  # 実行
 
+        def preparation_vertical():
+        target_pose = geometry_msgs.msg.Pose()
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0)  # 上方から掴みに行く場合
+        target_pose.orientation.x = q[0]
+        target_pose.orientation.y = q[1]
+        target_pose.orientation.z = q[2]
+        target_pose.orientation.w = q[3]
+        arm.set_pose_target(target_pose)  # 目標ポーズ設定
+        arm.go()  # 実行
+
+        def preparation_vertical():
+        target_pose = geometry_msgs.msg.Pose()
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
+        target_pose.orientation.x = q[0]
+        target_pose.orientation.y = q[1]
+        target_pose.orientation.z = q[2]
+        target_pose.orientation.w = q[3]
+        arm.set_pose_target(target_pose)  # 目標ポーズ設定
+        arm.go()  # 実行
+
+        def preparation_vertical():
+        target_pose = geometry_msgs.msg.Pose()
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0)  # 上方から掴みに行く場合
+        target_pose.orientation.x = q[0]
+        target_pose.orientation.y = q[1]
+        target_pose.orientation.z = q[2]
+        target_pose.orientation.w = q[3]
+        arm.set_pose_target(target_pose)  # 目標ポーズ設定
+        arm.go()  # 実行
+
+        def preparation_vertical():
+        target_pose = geometry_msgs.msg.Pose()
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(3.14 * 9 / 10, 3.14 / 2, -3.14)  # 上方から掴みに行く場合
+        target_pose.orientation.x = q[0]
+        target_pose.orientation.y = q[1]
+        target_pose.orientation.z = q[2]
+        target_pose.orientation.w = q[3]
+        arm.set_pose_target(target_pose)  # 目標ポーズ設定
+        arm.go()  # 実行
+
  
     move_max_velocity()
     arm.set_named_target("home")
