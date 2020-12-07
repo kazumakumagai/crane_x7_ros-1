@@ -104,7 +104,20 @@ def main():
 
     #パターン-----縦持ち
 
-  
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+    preparation_vertical()
+    hit_tambourine_vertical()
+
+
     move_max_velocity()
     arm.set_named_target("home")
     arm.go()
