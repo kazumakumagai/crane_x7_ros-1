@@ -26,31 +26,12 @@ def main():
 
     print("Current state:")
     print(robot.get_current_state())
-
-    ###
-    ###     b-group
-    ###
-
-    #紙Aコップのx座標　紙Aコップのy座標　紙Bコップx座標 紙Bコップy座標
+    
     position_base =[[0.29, 0.13, 0.29, -0.11]]
     Acup_tukamu = False
     Bcup_tukamu = False
 
-    """
-    使い方
-    ハンドをつかんだ時は
-    position_manager(False,False,x,y,True)
-    ハンドをはなした時は
-    position_manager(False,False,x,y,False)
-    Aカップをつかみたい時の手先の位置を知りたいときは
-    aa = position_manager(True,True,0,0,False)
-    x = aa[0]
-    y = aa[1]
-    BBカップをつかみたい時の手先の位置を知りたいときは
-    aa = position_manager(True,False,0,0,False)
-    x = aa[0]
-    y = aa[1]
-    """
+  
     def position_manager(master_judge,paper_cup,x,y,tukami):
         global Acup_tukamu
         global Bcup_tukamu
@@ -96,13 +77,7 @@ def main():
 
             return position_ret
 
-    ###
-    ###     b-group-end
-    ###
 
-    ###
-    ###     a-group
-    ###
 
     stop_time = 2.0  # 停止する時間を指定
 
