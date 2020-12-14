@@ -73,7 +73,20 @@ def main():
         target_pose.orientation.z = q[2]
         target_pose.orientation.w = q[3]
         arm.set_pose_target(target_pose)  
-        arm.go()  
+        arm.go()
+        
+    def preparation2_vertical():
+        target_pose = geometry_msgs.msg.Pose()
+        target_pose.position.x = te_x_position_vertical
+        target_pose.position.y = te_y_position_vertical
+        target_pose.position.z = te_z_position_vertical
+        q = quaternion_from_euler(-3.14/3.0, 3.14, -3.14/2.0)  
+        target_pose.orientation.x = q[0]
+        target_pose.orientation.y = q[1]
+        target_pose.orientation.z = q[2]
+        target_pose.orientation.w = q[3]
+        arm.set_pose_target(target_pose)  
+        arm.go()
         
     def p1_vertical():
         target_pose = geometry_msgs.msg.Pose()
@@ -131,15 +144,15 @@ def main():
     preparation_vertical()
     preparation_vertical()
     p1_vertical()
-    preparation_vertical()
+    preparation2_vertical()
     p2_vertical()
     preparation_vertical()
     p3_vertical()
-    preparation_vertical()
+    preparation2_vertical()
     p4_vertical()
     preparation_vertical()
     p1_vertical()
-    preparation_vertical()
+    preparation2_vertical()
  
     move_max_velocity()
     arm.set_named_target("home")
