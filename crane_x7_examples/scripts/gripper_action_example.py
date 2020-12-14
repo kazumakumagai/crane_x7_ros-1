@@ -54,7 +54,7 @@ def main():
         target_pose.position.x = pos_x
         target_pose.position.y = pos_y
         target_pose.position.z = pos_z
-        q = quaternion_from_euler(-3.14/2.0, 3.14, -3.14/2.0) 
+        q = quaternion_from_euler(-3.14/2.5, 3.14, -3.14/2.0) 
         target_pose.orientation.x = q[0]
         target_pose.orientation.y = q[1]
         target_pose.orientation.z = q[2]
