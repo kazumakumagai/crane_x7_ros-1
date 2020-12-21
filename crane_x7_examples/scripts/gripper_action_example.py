@@ -146,14 +146,7 @@ def main():
     p1_vertical()
     preparation2_vertical()
     p2_vertical()
-//    preparation_vertical()
-//    p3_vertical()
-//    preparation2_vertical()
-//    p4_vertical()
-//    preparation_vertical()
-//    p1_vertical()
-//    preparation2_vertical()//
- 
+    preparation2_vertical()
     move_max_velocity()
     arm.set_named_target("home")
     arm.go()
